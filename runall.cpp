@@ -13,7 +13,7 @@
 using namespace std;
 using namespace filesystem;
 
-static string hostname;
+string hostname;
 
 float run_once(bool display) {
     FILE* fp = popen("./a.out", "r");
@@ -28,7 +28,7 @@ float run_once(bool display) {
 }
 
 float run_many(void) {
-    const int limit = 10;
+    const int limit = 20;
     int repeats;
     float best;
     for (best = run_once(true), repeats = limit; repeats; --repeats) {
@@ -47,7 +47,15 @@ void run_test(string& path) {
     cout << endl << "Compiling " << path << endl;
     copy_file(path + "/" + path + ".cpp", path + ".cpp", copy_options::overwrite_existing);
     copy_file(path + "/" + path + ".txt", path + ".txt", copy_options::overwrite_existing);
-    system(("g++ -O3 -std=c++20 " + path + ".cpp -lpthread").c_str());
+    stringstream ss;
+    string tune;
+    if (hostname == "opi5" || hostname == "rock5b" || hostname == "pi5")
+        tune = "-mtune=cortex-a76";
+    else if (hostname == "pi4b")
+        tune = "-mtune=cortex-a72";
+    ss << "g++ -O3 -std=c++17 " << tune << " " << path << ".cpp -lpthread";
+    cout << ss.str() << endl;
+    system(ss.str().c_str());
     cout << "Running " << path << endl;
     results.push_back(run_many());
     cout << "Best : " << results.back() << endl;
