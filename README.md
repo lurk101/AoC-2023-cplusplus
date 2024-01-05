@@ -13,28 +13,28 @@ For puzzle definition see https://adventofcode.com/2023
 
 | Day | Title | rock5b | opi5 | pi5 | pi4b |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Trebuchet?! | 1.824 ms. | 1.886 ms. | 1.754 ms. | 3.557 ms. |
-| 2 | Cube Conundrum | 0.981 ms. | 0.995 ms. | 0.92 ms. | 1.936 ms. |
-| 3 | Gear Ratios | 0.342 ms. | 0.348 ms. | 0.297 ms. | 0.659 ms. |
-| 4 | Scratchcards | 1.049 ms. | 1.096 ms. | 1.027 ms. | 2.225 ms. |
-| 5 | If You Give A Seed A Fertilizer | 0.621 ms. | 0.633 ms. | 0.593 ms. | 1.255 ms. |
-| 6 | Wait For It | 0.079 ms. | 0.082 ms. | 0.08 ms. | 0.179 ms. |
-| 7 | Camel Cards | 4.237 ms. | 4.464 ms. | 4.234 ms. | 8.371 ms. |
-| 8 | Haunted Wasteland | 6.178 ms. | 6.453 ms. | 6.015 ms. | 15.332 ms. |
-| 9 | Mirage Maintenance | 1.539 ms. | 1.582 ms. | 1.491 ms. | 3.12 ms. |
-| 10 | Pipe Maze | 0.446 ms. | 0.447 ms. | 0.419 ms. | 0.876 ms. |
-| 11 | Cosmic Expansion | 0.508 ms. | 0.522 ms. | 0.485 ms. | 1.174 ms. |
-| 12 | Hot Springs | 60.141 ms. | 62.756 ms. | 59.005 ms. | 110.599 ms. |
-| 13 | Point of Incidence | 0.352 ms. | 0.368 ms. | 0.317 ms. | 0.716 ms. |
-| 14 | Parabolic Reflector Dish | 693.485 ms. | 725.039 ms. | 678.383 ms. | 1233.78 ms. |
-| 15 | Lens Library | 0.933 ms. | 0.951 ms. | 0.821 ms. | 1.918 ms. |
-| 16 | The Floor Will Be Lava | 73.78 ms. | 77.38 ms. | 71.148 ms. | 94.981 ms. |
-| 17 | Clumsy Crucible | 47.768 ms. | 49.548 ms. | 44.047 ms. | 95.327 ms. |
-| 18 | Lavaduct Lagoon | 0.81 ms. | 0.827 ms. | 0.8 ms. | 1.855 ms. |
-| 19 | Aplenty | 1.075 ms. | 1.104 ms. | 0.997 ms. | 2.171 ms. |
-| 20 | Pulse Propagation | 22.05 ms. | 22.918 ms. | 21.428 ms. | 43.294 ms. |
-| 21 | Step Counter | 523.501 ms. | 525.036 ms. | 448.237 ms. | 1044.91 ms. |
-| 22 | Sand Slabs | 21.119 ms. | 21.824 ms. | 20.252 ms. | 41.26 ms. |
-| 23 | A Long Walk | 3451.95 ms. | 3609.54 ms. | 3370.88 ms. | 7074.46 ms. |
-| 24 | Never Tell Me The Odds | 1.168 ms. | 1.194 ms. | 1.103 ms. | 2.454 ms. |
-| 25 | Snowverload | 2944.5 ms. | 2924.93 ms. | 2896.59 ms. | 5371.78 ms. |
+| 1 | Trebuchet?! | 1.867 ms. | 1.962 ms. | 1.796 ms. | 3.717 ms. |
+| 2 | Cube Conundrum | 0.894 ms. | 0.94 ms. | 0.881 ms. | 1.764 ms. |
+| 3 | Gear Ratios | 0.342 ms. | 0.359 ms. | 0.28 ms. | 0.604 ms. |
+| 4 | Scratchcards | 1.037 ms. | 1.076 ms. | 0.973 ms. | 2.054 ms. |
+| 5 | If You Give A Seed A Fertilizer | 0.593 ms. | 0.621 ms. | 0.544 ms. | 1.203 ms. |
+| 6 | Wait For It | 0.076 ms. | 0.078 ms. | 0.045 ms. | 0.156 ms. |
+| 7 | Camel Cards | 3.998 ms. | 4.201 ms. | 4.06 ms. | 7.969 ms. |
+| 8 | Haunted Wasteland | 5.971 ms. | 6.245 ms. | 5.814 ms. | 14.658 ms. |
+| 9 | Mirage Maintenance | 1.443 ms. | 1.497 ms. | 1.399 ms. | 3.042 ms. |
+| 10 | Pipe Maze | 0.438 ms. | 0.442 ms. | 0.373 ms. | 0.815 ms. |
+| 11 | Cosmic Expansion | 0.181 ms. | 0.187 ms. | 0.126 ms. | 0.369 ms. |
+| 12 | Hot Springs | 60.952 ms. | 63.571 ms. | 59.582 ms. | 130.045 ms. |
+| 13 | Point of Incidence | 0.352 ms. | 0.368 ms. | 0.305 ms. | 0.675 ms. |
+| 14 | Parabolic Reflector Dish | 648.222 ms. | 679.805 ms. | 636.737 ms. | 1230.7 ms. |
+| 15 | Lens Library | 0.939 ms. | 0.951 ms. | 0.791 ms. | 1.797 ms. |
+| 16 | The Floor Will Be Lava | 57.976 ms. | 60.598 ms. | 56.442 ms. | 79.735 ms. |
+| 17 | Clumsy Crucible | 44.695 ms. | 46.274 ms. | 41.075 ms. | 87.773 ms. |
+| 18 | Lavaduct Lagoon | 0.796 ms. | 0.829 ms. | 0.813 ms. | 1.774 ms. |
+| 19 | Aplenty | 0.984 ms. | 1.017 ms. | 0.887 ms. | 1.989 ms. |
+| 20 | Pulse Propagation | 21.953 ms. | 23.011 ms. | 21.371 ms. | 43.62 ms. |
+| 21 | Step Counter | 509.202 ms. | 504.877 ms. | 443.885 ms. | 1016.44 ms. |
+| 22 | Sand Slabs | 21.381 ms. | 22.196 ms. | 20.533 ms. | 41.049 ms. |
+| 23 | A Long Walk | 3371.24 ms. | 3534.57 ms. | 3309.16 ms. | 7213.59 ms. |
+| 24 | Never Tell Me The Odds | 1.152 ms. | 1.203 ms. | 1.072 ms. | 2.422 ms. |
+| 25 | Snowverload | 3088.75 ms. | 3725.33 ms. | 2882.03 ms. | 5366.5 ms. |
