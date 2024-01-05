@@ -32,47 +32,45 @@ static vector<uint32_t> split_numbers(string& s) {
 }
 
 struct key {
-    uint32_t k[4];
+    uint32_t si, ci, cc, dot;
     bool operator==(const key& a) const {
-        return (k[0] == a.k[0]) && (k[1] == a.k[1]) && (k[2] == a.k[2]) && (k[3] == a.k[3]);
+        return si == a.si && ci == a.ci && cc == a.cc && dot == a.dot;
     }
-    struct hash_key {
+    struct hash {
         size_t operator()(const key& k) const {
-            return ((size_t(k.k[0]) << 32) + k.k[1]) ^ ((size_t(k.k[2]) << 32) + k.k[3]);
+            return ((size_t(k.si) << 32) | k.ci) ^ ((size_t(k.cc) << 32) | k.dot);
         }
     };
 };
 
 static uint64_t solve(string s, vector<uint32_t> c) {
-    unordered_map<key, uint64_t, key::hash_key> states({{{0, 0, 0, 0}, 1}}), nstates;
+    unordered_map<key, uint64_t, key::hash> states({{{0, 0, 0, 0}, 1}}), new_states;
     uint64_t count = 0;
     while (states.size()) {
-        uint32_t si, ci, cc, dot;
-        uint64_t num;
         for (auto& cs : states) {
-            num = cs.second;
-            si = cs.first.k[0];
-            ci = cs.first.k[1];
-            cc = cs.first.k[2];
-            dot = cs.first.k[3];
+            auto num = cs.second;
+            auto si = cs.first.si;
+            auto ci = cs.first.ci;
+            auto cc = cs.first.cc;
+            auto dot = cs.first.dot;
             if (si == s.size()) {
                 if (ci == c.size()) count += num;
                 continue;
             }
             if ((s[si] == '#' || s[si] == '?') && ci < c.size() && dot == 0) {
-                if (s[si] == '?' && cc == 0) nstates[{si + 1, ci, cc, dot}] += num;
+                if (s[si] == '?' && cc == 0) new_states[{si + 1, ci, cc, dot}] += num;
                 cc++;
                 if (cc == c[ci]) {
                     ci++;
                     cc = 0;
                     dot = 1;
                 }
-                nstates[{si + 1, ci, cc, dot}] += num;
+                new_states[{si + 1, ci, cc, dot}] += num;
             } else if ((s[si] == '.' || s[si] == '?') && cc == 0)
-                nstates[{si + 1, ci, 0, 0}] += num;
+                new_states[{si + 1, ci, 0, 0}] += num;
         }
-        states.swap(nstates);
-        nstates.clear();
+        states.swap(new_states);
+        new_states.clear();
     }
     return count;
 }
@@ -80,22 +78,19 @@ static uint64_t solve(string s, vector<uint32_t> c) {
 int main() {
     auto start = high_resolution_clock::now();
     ifstream f("day12.txt");
-    vector<string> lines;
-    string line;
-    while (getline(f, line))
-        lines.push_back(line);
     uint64_t p1 = 0, p2 = 0;
-    for (auto& l : lines) {
+    string l;
+    while (getline(f, l)) {
         auto ll = split(l, ' ');
         string s = ll[0];
         auto v = split_numbers(ll[1]);
         p1 += solve(s, v);
         string p2s = s;
-        vector<uint32_t> p2v = v;
+        auto p2v = v;
         for (uint32_t j = 0; j < 4; j++) {
             p2s += '?';
             p2s += s;
-            for (int j = 0; j < v.size(); j++) p2v.push_back(v[j]);
+            p2v.insert(p2v.end(), v.begin(), v.end());
         }
         p2 += solve(p2s, p2v);
     }
