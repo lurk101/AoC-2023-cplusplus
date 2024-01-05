@@ -52,12 +52,10 @@ int64_t part(uint32_t delta) {
     int64_t dist = 0;
     for (int y = 0; y < row_pos.size() - 1; y++)
         for (int y2 = y + 1; y2 < row_pos.size(); y2++)
-            dist +=
-                abs(row_pos[y] - row_pos[y2]) * row_count[y] * row_count[y2];
+            dist += int64_t(abs(row_pos[y] - row_pos[y2])) * row_count[y] * row_count[y2];
     for (int x = 0; x < col_pos.size() - 1; x++)
         for (int x2 = x + 1; x2 < col_pos.size(); x2++)
-            dist +=
-                abs(col_pos[x] - col_pos[x2]) * col_count[x] * col_count[x2];
+            dist += int64_t(abs(col_pos[x] - col_pos[x2])) * col_count[x] * col_count[x2];
     return dist;
 }
 
