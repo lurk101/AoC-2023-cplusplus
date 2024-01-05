@@ -11,7 +11,7 @@ using namespace std;
 using namespace chrono;
 
 static vector<string> lines;
-static set<int> empty_columns;
+static vector<bool> empty_columns;
 
 static bool empty_row(string row) {
     for (char c : row)
@@ -36,7 +36,7 @@ int64_t part(uint32_t delta) {
         if (empty_row(lines[y])) y_inc += delta;
         int x_inc = 0;
         for (int x = 0; x < lines[0].size(); x++) {
-            if (empty_columns.find(x) != empty_columns.end()) x_inc += delta;
+            if (empty_columns[x]) x_inc += delta;
             if (lines[y][x] == '#') galaxy.push_back(make_pair(y + y_inc, x + x_inc));
         }
     }
@@ -52,7 +52,7 @@ int main() {
     string line;
     while (getline(f, line)) lines.push_back(line);
     for (int x = 0; x < lines[0].size(); x++)
-        if (empty_col(lines, x)) empty_columns.insert(x);
+        empty_columns.push_back(empty_col(lines, x));
     cout << title << endl
          << "Part 1  - " << part(1) << endl
          << "Part 2  - " << part(999999) << endl
