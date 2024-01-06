@@ -28,34 +28,31 @@ static int count_col(int col) {
 }
 
 int64_t part(uint32_t delta) {
-    vector<int> row_pos, row_count, col_pos, col_count;
+    vector<pair<int, int>> rows, columns;
     int y_inc = 0;
     for (int y = 0; y < lines.size(); y++) {
         int row_n = count_row(y);
         if (row_n == 0)
             y_inc += delta;
-        else {
-            row_pos.push_back(y + y_inc);
-            row_count.push_back(row_n);
-        }
+        else
+            rows.push_back(make_pair(y + y_inc, row_n));
     }
     int x_inc = 0;
     for (int x = 0; x < lines[0].size(); x++) {
         int col_n = count_col(x);
         if (col_n == 0)
             x_inc += delta;
-        else {
-            col_pos.push_back(x + x_inc);
-            col_count.push_back(col_n);
-        }
+        else
+            columns.push_back(make_pair(x + x_inc, col_n));
     }
     int64_t dist = 0;
-    for (int y = 0; y < row_pos.size() - 1; y++)
-        for (int y2 = y + 1; y2 < row_pos.size(); y2++)
-            dist += int64_t(abs(row_pos[y] - row_pos[y2])) * row_count[y] * row_count[y2];
-    for (int x = 0; x < col_pos.size() - 1; x++)
-        for (int x2 = x + 1; x2 < col_pos.size(); x2++)
-            dist += int64_t(abs(col_pos[x] - col_pos[x2])) * col_count[x] * col_count[x2];
+    for (int y = 0; y < rows.size() - 1; y++)
+        for (int y2 = y + 1; y2 < rows.size(); y2++)
+            dist += int64_t(rows[y2].first - rows[y].first) * rows[y].second * rows[y2].second;
+    for (int x = 0; x < columns.size() - 1; x++)
+        for (int x2 = x + 1; x2 < columns.size(); x2++)
+            dist += int64_t(columns[x2].first - columns[x].first) * columns[x].second *
+                    columns[x2].second;
     return dist;
 }
 
