@@ -2,12 +2,13 @@
 
 **ARM SBC Run Times**
 
-| Model | Core | Clock |
-| --- | --- | --- |
-| radxa rock 5b, orange pi5, raspberry pi5 | cortex-a76 | 2.4 GHz |
-| raspberry pi4b | cortex-a72 | 1.8 GHz |
+| Model | Core | 
+| --- | --- |
+| radxa rock 5b, orange pi5 | 4 x cortex-a76(2.4GHz), 4 x cortex-a55(1.8GHz) |
+| raspberry pi5 | 4 x cortex-a76(2.4 GHz) |
+| raspberry pi4b | 4 x cortex-a72(1.8 GHz) |
 
-Compiler: g++ (Debian 12.2.0-14) 12.2.0
+Compiler: g++ (GCC) 14.0.0 20240107 (experimental)
 
 For puzzle definition see https://adventofcode.com/2023
 

@@ -32,13 +32,15 @@ static vector<uint32_t> split_numbers(string& s) {
 }
 
 struct key {
-    uint32_t si, ci, cc, dot;
+    uint32_t start_ix, contiguous_ix, contiguous_count, dot;
     bool operator==(const key& a) const {
-        return si == a.si && ci == a.ci && cc == a.cc && dot == a.dot;
+        return start_ix == a.start_ix && contiguous_ix == a.contiguous_ix &&
+               contiguous_count == a.contiguous_count && dot == a.dot;
     }
     struct hash {
         size_t operator()(const key& k) const {
-            return ((size_t(k.si) << 32) | k.ci) ^ ((size_t(k.cc) << 32) | k.dot);
+            return ((size_t(k.start_ix) << 32) | k.contiguous_ix) ^
+                   ((size_t(k.contiguous_count) << 32) | k.dot);
         }
     };
 };
@@ -49,9 +51,9 @@ static uint64_t solve(string s, vector<uint32_t> c) {
     while (states.size()) {
         for (auto& cs : states) {
             auto num = cs.second;
-            auto si = cs.first.si;
-            auto ci = cs.first.ci;
-            auto cc = cs.first.cc;
+            auto si = cs.first.start_ix;
+            auto ci = cs.first.contiguous_ix;
+            auto cc = cs.first.contiguous_count;
             auto dot = cs.first.dot;
             if (si == s.size()) {
                 if (ci == c.size()) count += num;
