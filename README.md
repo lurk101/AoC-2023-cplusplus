@@ -4,9 +4,9 @@
 
 | Model | Core | 
 | --- | --- |
-| radxa rock 5b, orange pi5 | 4 x cortex-a76(2.4GHz), 4 x cortex-a55(1.8GHz) |
-| raspberry pi5 | 4 x cortex-a76(2.4 GHz) |
-| raspberry pi4b | 4 x cortex-a72(1.8 GHz) |
+| radxa rock 5b, orange pi5 | 4 x cortex-a76 (2.4GHz), 4 x cortex-a55 (1.8GHz) |
+| raspberry pi5 | 4 x cortex-a76 (2.4 GHz) |
+| raspberry pi4b | 4 x cortex-a72 (1.8 GHz) |
 
 Compiler: g++ (GCC) 14.0.0 20240107 (experimental)
 
@@ -14,28 +14,28 @@ For puzzle definition see https://adventofcode.com/2023
 
 | Day | Title | rock5b | opi5 | pi5 | pi4b |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Trebuchet?! | 1.824 ms. | 1.845 ms. | 1.753 ms. | 3.64 ms. |
-| 2 | Cube Conundrum | 0.892 ms. | 0.928 ms. | 0.88 ms. | 1.762 ms. |
-| 3 | Gear Ratios | 0.343 ms. | 0.346 ms. | 0.278 ms. | 0.605 ms. |
-| 4 | Scratchcards | 1.046 ms. | 1.068 ms. | 0.983 ms. | 2.091 ms. |
-| 5 | If You Give A Seed A Fertilizer | 0.6 ms. | 0.606 ms. | 0.55 ms. | 1.227 ms. |
-| 6 | Wait For It | 0.079 ms. | 0.08 ms. | 0.042 ms. | 0.152 ms. |
-| 7 | Camel Cards | 4.003 ms. | 4.181 ms. | 4.059 ms. | 7.881 ms. |
-| 8 | Haunted Wasteland | 5.977 ms. | 6.038 ms. | 5.834 ms. | 14.618 ms. |
-| 9 | Mirage Maintenance | 1.444 ms. | 1.461 ms. | 1.397 ms. | 3.077 ms. |
-| 10 | Pipe Maze | 0.43 ms. | 0.433 ms. | 0.371 ms. | 0.833 ms. |
-| 11 | Cosmic Expansion | 0.219 ms. | 0.22 ms. | 0.162 ms. | 0.401 ms. |
-| 12 | Hot Springs | 60.513 ms. | 61.201 ms. | 59.405 ms. | 116.42 ms. |
-| 13 | Point of Incidence | 0.352 ms. | 0.343 ms. | 0.302 ms. | 0.673 ms. |
-| 14 | Parabolic Reflector Dish | 655.838 ms. | 663.057 ms. | 644.162 ms. | 1224.91 ms. |
-| 15 | Lens Library | 0.931 ms. | 0.92 ms. | 0.784 ms. | 1.793 ms. |
-| 16 | The Floor Will Be Lava | 57.588 ms. | 58.738 ms. | 56.418 ms. | 78.024 ms. |
-| 17 | Clumsy Crucible | 44.347 ms. | 44.287 ms. | 40.653 ms. | 88.996 ms. |
-| 18 | Lavaduct Lagoon | 0.785 ms. | 0.792 ms. | 0.812 ms. | 1.75 ms. |
-| 19 | Aplenty | 0.998 ms. | 0.988 ms. | 0.885 ms. | 1.979 ms. |
-| 20 | Pulse Propagation | 22.149 ms. | 22.378 ms. | 21.643 ms. | 42.577 ms. |
-| 21 | Step Counter | 513.337 ms. | 495.564 ms. | 444.119 ms. | 1014.63 ms. |
-| 22 | Sand Slabs | 21.329 ms. | 21.582 ms. | 20.546 ms. | 41.702 ms. |
-| 23 | A Long Walk | 3362.23 ms. | 3398.95 ms. | 3302.71 ms. | 7188.77 ms. |
-| 24 | Never Tell Me The Odds | 1.145 ms. | 1.165 ms. | 1.072 ms. | 2.433 ms. |
-| 25 | Snowverload | 3779.47 ms. | 2987.46 ms. | 2903.35 ms. | 5366.2 ms. |
+| 1 | Trebuchet?! | 1.87 ms. | 1.888 ms. | 1.793 ms. | 3.691 ms. |
+| 2 | Cube Conundrum | 0.89 ms. | 0.933 ms. | 0.883 ms. | 1.792 ms. |
+| 3 | Gear Ratios | 0.34 ms. | 0.343 ms. | 0.279 ms. | 0.611 ms. |
+| 4 | Scratchcards | 1.043 ms. | 1.054 ms. | 0.978 ms. | 2.086 ms. |
+| 5 | If You Give A Seed A Fertilizer | 0.599 ms. | 0.605 ms. | 0.546 ms. | 1.211 ms. |
+| 6 | Wait For It | 0.08 ms. | 0.081 ms. | 0.045 ms. | 0.151 ms. |
+| 7 | Camel Cards | 4.019 ms. | 4.156 ms. | 4.059 ms. | 7.844 ms. |
+| 8 | Haunted Wasteland | 5.996 ms. | 6.061 ms. | 5.794 ms. | 14.616 ms. |
+| 9 | Mirage Maintenance | 1.45 ms. | 1.45 ms. | 1.398 ms. | 3.042 ms. |
+| 10 | Pipe Maze | 0.432 ms. | 0.434 ms. | 0.366 ms. | 0.837 ms. |
+| 11 | Cosmic Expansion | 0.213 ms. | 0.217 ms. | 0.161 ms. | 0.41 ms. |
+| 12 | Hot Springs | 60.143 ms. | 60.848 ms. | 59.076 ms. | 116.519 ms. |
+| 13 | Point of Incidence | 0.346 ms. | 0.355 ms. | 0.303 ms. | 0.68 ms. |
+| 14 | Parabolic Reflector Dish | 648.259 ms. | 655.583 ms. | 636.846 ms. | 1224.95 ms. |
+| 15 | Lens Library | 0.947 ms. | 0.911 ms. | 0.783 ms. | 1.817 ms. |
+| 16 | The Floor Will Be Lava | 57.988 ms. | 58.973 ms. | 56.464 ms. | 78.312 ms. |
+| 17 | Clumsy Crucible | 44.632 ms. | 44.467 ms. | 41.166 ms. | 89.032 ms. |
+| 18 | Lavaduct Lagoon | 0.793 ms. | 0.794 ms. | 0.804 ms. | 1.751 ms. |
+| 19 | Aplenty | 1.003 ms. | 0.986 ms. | 0.891 ms. | 1.972 ms. |
+| 20 | Pulse Propagation | 21.838 ms. | 22.204 ms. | 21.402 ms. | 44.831 ms. |
+| 21 | Step Counter | 515.785 ms. | 502.067 ms. | 443.861 ms. | 1015 ms. |
+| 22 | Sand Slabs | 21.223 ms. | 21.517 ms. | 20.577 ms. | 41.61 ms. |
+| 23 | A Long Walk | 3369.21 ms. | 3405.93 ms. | 3309.69 ms. | 7248.6 ms. |
+| 24 | Never Tell Me The Odds | 1.156 ms. | 1.158 ms. | 1.074 ms. | 2.431 ms. |
+| 25 | Snowverload | 3187.42 ms. | 3448.52 ms. | 2881.58 ms. | 5367.32 ms. |
