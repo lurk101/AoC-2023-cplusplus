@@ -48,7 +48,12 @@ void run_test(string& path) {
     copy_file(path + "/" + path + ".cpp", path + ".cpp", copy_options::overwrite_existing);
     copy_file(path + "/" + path + ".txt", path + ".txt", copy_options::overwrite_existing);
     stringstream ss;
-    ss << "g++ -O3 -std=c++17 " << path << ".cpp -lpthread";
+    string tune;
+    if (hostname == "opi5" || hostname == "rock5b" || hostname == "pi5")
+        tune = "-mtune=cortex-a76";
+    else if (hostname == "pi4b")
+        tune = "-mtune=cortex-a72";
+    ss << "g++ -O3 -std=c++17 " << tune << " " << path << ".cpp -lpthread";
     //cout << ss.str() << endl;
     system(ss.str().c_str());
     cout << "Running " << path << endl;
