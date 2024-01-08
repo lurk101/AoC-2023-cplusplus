@@ -20,4 +20,4 @@ fi
 if [ "$HOSTNAME" = "rock5b" ]; then
         TS="taskset -c 4-7"
 fi
-./runall $HOSTNAME $1
+$TS ./runall $HOSTNAME $1
