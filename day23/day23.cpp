@@ -1,22 +1,14 @@
 auto constexpr title = "--- Day 23: A Long Walk ---";
 
-#include <sched.h>
-#include <unistd.h>
-
-#include <atomic>
 #include <chrono>
 #include <fstream>
 #include <iostream>
 #include <map>
-#include <mutex>
 #include <queue>
 #include <vector>
 
-#include "ctpl.h"
-
 using namespace std;
 using namespace chrono;
-using namespace ctpl;
 
 static vector<vector<char>> grid;
 
@@ -105,8 +97,8 @@ static void load_input(string fn) {
         bool forward;
     };
     queue<todo_t> todo;
-    vector<uint64_t> directed = vector<uint64_t>(36, 0), undirected = vector<uint64_t>(36, 0);
-    vector<vector<int>> weight = vector<vector<int>>(36, vector<int>(36, 0));
+    vector<uint64_t> directed = vector<uint64_t>(64, 0), undirected = vector<uint64_t>(64, 0);
+    vector<vector<int>> weight = vector<vector<int>>(64, vector<int>(64, 0));
     for (auto& [start, from] : poi) {
         todo.push({start, 0, true});
         grid[start.y][start.x] = '#';
@@ -153,7 +145,7 @@ static void load_input(string fn) {
 }
 
 static int part1() {
-    vector<int> cost(36, 0);
+    vector<int> cost(64, 0);
     queue<int> todo;
     todo.push(input.start);
     while (!todo.empty()) {
@@ -184,50 +176,7 @@ static int dfs(int from, uint64_t seen) {
     return result;
 }
 
-static atomic<int> shared;
-
-static void update_shared(int cost) {
-    int s;
-    do {
-        s = shared.load();
-        if (s >= cost) break;
-    } while (!shared.compare_exchange_weak(s, cost));
-}
-
-static void worker(int idx, int from, int cost, uint64_t seen) {
-    update_shared(cost + dfs(from, seen));
-}
-
-static int part2() {
-    struct seed {
-        int from, cost;
-        uint64_t seen;
-    };
-    cpu_set_t cpus;
-    sched_getaffinity(0, sizeof(cpus), &cpus);
-    thread_pool pool(CPU_COUNT(&cpus));
-    queue<seed> seeds;
-    seeds.push({input.start, 0, bit(input.start)});
-    shared.store(0);
-    while (seeds.size() <= CPU_COUNT(&cpus)) {
-        auto [from, cost, seen] = seeds.front();
-        seeds.pop();
-        if (from == input.end) {
-            update_shared(cost);
-            continue;
-        }
-        pool.push(worker, from, cost, seen);
-        uint64_t nodes = input.undirected[from] & ~seen;
-        while (nodes) {
-            int to = ctz(nodes);
-            uint64_t mask = bit(to);
-            nodes ^= mask;
-            seeds.push({to, cost + input.weight[from][to], seen | mask});
-        }
-    }
-    pool.stop(true);
-    return shared.load() + input.extra;
-}
+static int part2() { return dfs(input.start, bit(input.start)) + input.extra; }
 
 int main() {
     auto start = high_resolution_clock::now();
