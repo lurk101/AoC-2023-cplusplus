@@ -53,7 +53,7 @@ void run_test(string& path) {
         tune = "-mtune=cortex-a76";
     else if (hostname == "pi4b")
         tune = "-mtune=cortex-a72";
-    ss << "g++ -O3 -std=c++17 " << tune << " " << path << ".cpp -lpthread";
+    ss << "g++ -O3 -std=c++23 " << tune << " " << path << ".cpp -lpthread";
     cout << ss.str() << endl;
     system(ss.str().c_str());
     cout << "Running " << path << endl;

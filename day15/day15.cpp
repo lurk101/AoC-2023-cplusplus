@@ -30,22 +30,6 @@ static unsigned int part1(vector<string>& instructions) {
     return sum;
 }
 
-template <class T, class U>
-constexpr T find_if(T first, T last, U p) {
-    for (; first != last; ++first)
-        if (p(*first)) return first;
-    return last;
-}
-
-template <class T, class U>
-T remove_if(T first, T last, U p) {
-    first = find_if(first, last, p);
-    if (first != last)
-        for (T i = first; ++i != last;)
-            if (!p(*i)) *first++ = move(*i);
-    return first;
-}
-
 static int part2(vector<string>& instructions) {
     vector<vector<pair<string, int>>> boxes(256);
     for (auto& instruction : instructions)
