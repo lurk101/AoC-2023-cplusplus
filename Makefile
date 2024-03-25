@@ -1,4 +1,9 @@
-CPPFLAGS=-O3 -std=c++23 -mtune=cortex-a76
+TUNE=cortex-a76
+ifeq ($(HOSTNAME), pi4b)
+TUNE=cortex-a72
+endif
+
+CPPFLAGS=-O3 -std=c++23 -mtune=$(TUNE)
 LDFLAGS=-lpthread
 
 .PHONY: all clean
@@ -13,7 +18,6 @@ runall: runall.o $(OBJECTS)
 
 runall.o: runall.cpp runall.h
 	g++ $(CPPFLAGS) -c $< -o $@
-
 
 day*/%.o: %.cpp runall.h ctpl.h
 	g++ $(CPPFLAGS) -c $< -o $@
