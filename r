@@ -1,3 +1,3 @@
 #!/bin/bash
 make
-runall $HOSTNAME
+./runall $HOSTNAME
