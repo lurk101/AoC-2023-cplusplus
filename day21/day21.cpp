@@ -8,6 +8,9 @@ auto const title = "--- Day 21: Step Counter ---";
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <sstream>
+
+#include "../runall.h"
 
 using namespace std;
 using namespace chrono;
@@ -55,9 +58,9 @@ static void search() {
     start_positions = next_pos;
 }
 
-int main() {
+void day21(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day21.txt");
+    ifstream f("day21/day21.txt");
     position start_pos;
     string line;
     int row = 0;
@@ -96,10 +99,15 @@ int main() {
     }
     int64_t p1 = parms[0], p2 = parms[1] - parms[0], p3 = parms[2] - parms[1],
             p = steps / grid.size(), part2 = p1 + p2 * p + (p * (p - 1) / 2) * (p3 - p2);
+    stringstream ss;
+    ss << part1;
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part1 << endl
-         << "Part 2  - " << part2 << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

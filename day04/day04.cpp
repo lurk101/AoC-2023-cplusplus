@@ -7,6 +7,8 @@ constexpr auto title = "--- Day 4: Scratchcards ---";
 #include <string>
 #include <vector>
 
+#include "../runall.h"
+
 using namespace std;
 using namespace chrono;
 
@@ -32,11 +34,11 @@ struct card {
     vector<int> winning, have;
 };
 
-vector<card> cards;
+static vector<card> cards;
 
-int main() {
+void day04(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day04.txt");
+    ifstream f("day04/day04.txt");
     string line;
     while (getline(f, line)) {
         vector<string> s = split(split(line, ':')[1], '|');
@@ -61,10 +63,15 @@ int main() {
             cards[j].instances += cards[i].instances;
         part2 += cards[i].instances;
     }
+    stringstream ss;
+    ss << part1;
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part1 << endl
-         << "Part 2  - " << part2 << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

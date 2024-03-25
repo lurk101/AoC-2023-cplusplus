@@ -10,11 +10,14 @@ constexpr auto title = "--- Day 25: Snowverload ---";
 #include <random>
 #include <string>
 #include <vector>
+#include <sstream>
+
+#include "../runall.h"
 
 using namespace std;
 using namespace chrono;
 
-int main() {
+void day25(struct result& r) {
     auto start = high_resolution_clock::now();
     vector<vector<int>> adj;
     int n;
@@ -48,7 +51,7 @@ int main() {
     auto read_graph = [&]() {
         n = 0;
         string u, v;
-        ifstream f("day25.txt");
+        ifstream f("day25/day25.txt");
         f >> u;
         u.pop_back();
         map<string, int> vertex_id;
@@ -128,11 +131,15 @@ int main() {
             }
             goto retry;
     };
-
+    stringstream ss;
+    ss << solution();
+    r.p1 = ss.str();
+    ss.str("");
+    ss << "free star";
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "part 1  - " << solution() << endl
-         << "part 2  - free star" << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

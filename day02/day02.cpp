@@ -7,6 +7,8 @@ constexpr auto title = "--- Day 2: Cube Conundrum ---";
 #include <string>
 #include <vector>
 
+#include "../runall.h"
+
 using namespace std;
 using namespace chrono;
 
@@ -27,9 +29,9 @@ static vector<string> split(const string& s, char delim) {
     return result;
 }
 
-int main() {
+void day02(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day02.txt");
+    ifstream f("day02/day02.txt");
     string line;
     int part1(0), part2(0);
     while (getline(f, line)) {
@@ -69,10 +71,15 @@ int main() {
         }
         part2 += red_min * green_min * blue_min;
     }
+    stringstream ss;
+    ss << part1;
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part1 << endl
-         << "Part 2  - " << part2 << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

@@ -10,6 +10,8 @@ constexpr auto title = "--- Day 19: Aplenty ---";
 #include <unordered_map>
 #include <vector>
 
+#include "../runall.h"
+
 using namespace std;
 using namespace chrono;
 
@@ -82,9 +84,9 @@ static uint64_t combinations(const string& rule_name, array<pair<int64_t, int64_
     return result + combinations(w.all_false, vrange);
 }
 
-int main() {
+void day19(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day19.txt");
+    ifstream f("day19/day19.txt");
     int part1 = 0;
     string line;
     while (getline(f, line)) {
@@ -111,10 +113,15 @@ int main() {
     }
     int64_t part2 = combinations(
         "in", {make_pair(1, 4000), make_pair(1, 4000), make_pair(1, 4000), make_pair(1, 4000)});
+    stringstream ss;
+    ss << part1;
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part1 << endl
-         << "Part 2  - " << part2 << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

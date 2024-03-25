@@ -8,6 +8,8 @@ constexpr auto title = "--- Day 6: Wait For It ---";
 #include <string>
 #include <vector>
 
+#include "../runall.h"
+
 using namespace std;
 using namespace chrono;
 
@@ -33,9 +35,9 @@ static uint64_t wins(double time, double dist) {
     return max_dist - min_dist + 1;
 }
 
-int main() {
+void day06(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day06.txt");
+    ifstream f("day06/day06.txt");
     string line;
     vector<int> t1, d1;
     uint64_t t2 = 0, d2 = 0;
@@ -52,11 +54,15 @@ int main() {
     int part1 = 1;
     for (int i = 0; i < t1.size(); ++i) part1 *= wins(t1[i], d1[i]);
     int part2 = wins(t2, d2);
+    stringstream ss;
+    ss << part1;
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part1 << endl
-         << "Part 2  - " << part2 << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }
-

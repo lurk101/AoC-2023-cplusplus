@@ -4,6 +4,9 @@ constexpr auto title = "--- Day 1: Trebuchet?! ---";
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <sstream>
+
+#include "../runall.h"
 
 using namespace std;
 using namespace chrono;
@@ -47,19 +50,24 @@ found2:
     return first * 10 + last;
 }
 
-int main() {
+void day01(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day01.txt");
+    ifstream f("day01/day01.txt");
     string line;
     uint32_t part1_sum = 0, part2_sum = 0;
     while (getline(f, line)) {
         part1_sum += part1(line);
         part2_sum += part2(line);
     }
+    stringstream ss;
+    ss << part1_sum;
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2_sum;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part1_sum << endl
-         << "Part 2  - " << part2_sum << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

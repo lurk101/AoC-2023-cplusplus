@@ -5,6 +5,9 @@ constexpr auto title = "--- Day 13: Point of Incidence ---";
 #include <iostream>
 #include <string>
 #include <vector>
+#include <sstream>
+
+#include "../runall.h"
 
 using namespace std;
 using namespace chrono;
@@ -61,9 +64,9 @@ static int part2(const vector<string>& grid) {
     return count;
 }
 
-int main() {
+void day13(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream inf("day13.txt");
+    ifstream inf("day13/day13.txt");
     string line;
     uint32_t p1 = 0, p2 = 0;
     while (getline(inf, line)) {
@@ -79,10 +82,15 @@ int main() {
         if (p == 0) p = part2(transpose(grid));
         p2 += p;
     }
+    stringstream ss;
+    ss << p1;
+    r.p1 = ss.str();
+    ss.str("");
+    ss << p2;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << p1 << endl
-         << "Part 2  - " << p2 << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

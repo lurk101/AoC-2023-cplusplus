@@ -7,6 +7,9 @@ constexpr auto title = "--- Day 16: The Floor Will Be Lava ---";
 #include <string>
 #include <thread>
 #include <vector>
+#include <sstream>
+
+#include "../runall.h"
 
 using namespace std;
 using namespace chrono;
@@ -114,9 +117,9 @@ void t(int i) {
     sides[i] = p2;
 }
 
-int main() {
+void day16(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day16.txt");
+    ifstream f("day16/day16.txt");
     string line;
     while (getline(f, line)) grid.push_back(line);
     uint32_t part1 = energy(beams[0], {0, 0, RIGHT}), part2 = 0;
@@ -126,10 +129,15 @@ int main() {
         threads[i]->join();
         part2 = max(part2, sides[i]);
     }
+    stringstream ss;
+    ss << part1;
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part1 << endl
-         << "Part 2  - " << part2 << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

@@ -5,14 +5,17 @@ constexpr auto title = "--- Day 10: Pipe Maze ---";
 #include <iostream>
 #include <string>
 #include <vector>
+#include <sstream>
+
+#include "../runall.h"
 
 using namespace std;
 using namespace chrono;
 
-int main() {
+void day10(struct result& r) {
     auto strt = high_resolution_clock::now();
     enum directions { d_down, d_right, d_up, d_left };
-    ifstream f("day10.txt");
+    ifstream f("day10/day10.txt");
     string line;
     uint32_t start_x, start_y, x, y = 0;
     vector<string> S, X;
@@ -110,10 +113,15 @@ int main() {
                 if (inside) part2++;
         }
     }
+    stringstream ss;
+    ss << part1;
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - strt).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part1 << endl
-         << "Part 2  - " << part2 << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - strt).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

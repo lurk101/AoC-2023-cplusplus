@@ -10,6 +10,8 @@ constexpr auto title = "--- Day 7: Camel Cards ---";
 #include <unordered_set>
 #include <vector>
 
+#include "../runall.h"
+
 using namespace std;
 using namespace chrono;
 
@@ -103,9 +105,9 @@ static uint32_t part(int part_n) {
     return sum;
 }
 
-int main() {
+void day07(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day07.txt");
+    ifstream f("day07/day07.txt");
     string line;
     while (getline(f, line)) {
         stringstream ss(line);
@@ -116,10 +118,15 @@ int main() {
         uint32_t bid = stoll(s);
         hands.push_back({hand, bid, strength_part1(hand), strength_part2(hand)});
     }
+    stringstream ss;
+    ss << part(1);
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part(2);
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part(1) << endl
-         << "Part 2  - " << part(2) << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

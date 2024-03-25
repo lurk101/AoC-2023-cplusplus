@@ -7,6 +7,9 @@ const auto title = "--- Day 24: Never Tell Me The Odds ---";
 #include <stdfloat>
 #include <string>
 #include <vector>
+#include <sstream>
+
+#include "../runall.h"
 
 using namespace std;
 using namespace chrono;
@@ -102,9 +105,9 @@ static int64_t part2() {
     return round(px) + round(py) + round(pz);
 }
 
-int main() {
+void day24(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day24.txt");
+    ifstream f("day24/day24.txt");
     string line;
     stone s;
     char c;
@@ -112,10 +115,15 @@ int main() {
         f >> c >> s.pos.y >> c >> s.pos.z >> c >> s.vel.x >> c >> s.vel.y >> c >> s.vel.z;
         stones.push_back(s);
     }
+    stringstream ss;
+    ss << part1();
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2();
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "part 1 - " << part1() << endl
-         << "part 2 - " << part2() << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

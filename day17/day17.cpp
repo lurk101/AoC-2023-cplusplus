@@ -6,6 +6,9 @@ constexpr auto title = "--- Day 17: Clumsy Crucible ---";
 #include <queue>
 #include <string>
 #include <vector>
+#include <sstream>
+
+#include "../runall.h"
 
 using namespace std;
 using namespace chrono;
@@ -55,19 +58,23 @@ static int solve(int mindist, int maxdist) {
     abort();
 }
 
-int main() {
+void day17(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day17.txt");
+    ifstream f("day17/day17.txt");
     string line;
     while (getline(f, line)) {
         grid.push_back({});
         for (auto c : line) grid.back().push_back(c - '0');
     }
+    stringstream ss;
+    ss << solve(1, 3);
+    r.p1 = ss.str();
+    ss.str("");
+    ss << solve(4, 10);;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1 -  " << solve(1, 3) << endl
-         << "Part 2 -  " << solve(4, 10) << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }
-

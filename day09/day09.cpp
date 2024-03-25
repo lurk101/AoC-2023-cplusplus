@@ -7,6 +7,8 @@ constexpr auto title = "--- Day 9: Mirage Maintenance ---";
 #include <string>
 #include <vector>
 
+#include "../runall.h"
+
 using namespace std;
 using namespace chrono;
 
@@ -49,16 +51,20 @@ static uint32_t part(int part_n) {
     return sum;
 }
 
-int main() {
+void day09(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day09.txt");
+    ifstream f("day09/day09.txt");
     string line;
     while (getline(f, line)) vv.push_back(split_numbers(line));
+    stringstream ss;
+    ss << part(1);
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part(2);
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part(1) << endl
-         << "Part 2  - " << part(2) << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }
-

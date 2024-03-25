@@ -10,6 +10,8 @@ constexpr auto title = "--- Day 20: Pulse Propagation ---";
 #include <string>
 #include <unordered_map>
 
+#include "../runall.h"
+
 using namespace std;
 using namespace chrono;
 
@@ -77,9 +79,9 @@ static void send_pulse() {
     }
 }
 
-int main() {
+void day20(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day20.txt");
+    ifstream f("day20/day20.txt");
     string line, rx_mod;
     vector<string> conjs;
     while (getline(f, line)) {
@@ -119,10 +121,15 @@ int main() {
         for (auto& [_, cycle] : cycles) has0 = has0 || !cycle;
     } while (has0);
     for (auto& [_, cycle] : cycles) part2 = lcm(part2, cycle);
+    stringstream ss;
+    ss << part1;
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1 -  " << part1 << endl
-         << "Part 2 -  " << part2 << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

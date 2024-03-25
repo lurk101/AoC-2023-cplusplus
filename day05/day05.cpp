@@ -7,6 +7,8 @@ constexpr auto title = "--- Day 5: If You Give A Seed A Fertilizer ---";
 #include <string>
 #include <vector>
 
+#include "../runall.h"
+
 using namespace std;
 using namespace chrono;
 
@@ -119,9 +121,9 @@ static int part2() {
     return least;
 }
 
-int main() {
+void day05(struct result& r) {
     auto strt = high_resolution_clock::now();
-    ifstream f("day05.txt");
+    ifstream f("day05/day05.txt");
     string line;
     getline(f, line);
     seeds = split_numbers(split(line, ':')[1]);
@@ -137,10 +139,15 @@ int main() {
         vector<uint64_t> v = split_numbers(line);
         maps[i].push_back({v[0], v[1], v[2]});
     }
+    stringstream ss;
+    ss << part1();
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2();
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - strt).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part1() << endl
-         << "Part 2  - " << part2() << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - strt).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

@@ -8,6 +8,8 @@ constexpr auto title = "--- Day 14: Parabolic Reflector Dish ---";
 #include <map>
 #include <vector>
 
+#include "../runall.h"
+
 using namespace std;
 using namespace chrono;
 
@@ -122,16 +124,21 @@ static int part1(vector<string> g) {
     return total_load(g);
 }
 
-int main() {
+void day14(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream inf("day14.txt");
+    ifstream inf("day14/day14.txt");
     string line;
     vector<string> grid;
     while (getline(inf, line)) grid.push_back(line);
+    stringstream ss;
+    ss << part1(grid);
+    r.p1 = ss.str();
+    ss.str("");
+    ss << part2(grid);
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << part1(grid) << endl
-         << "Part 2  - " << part2(grid) << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

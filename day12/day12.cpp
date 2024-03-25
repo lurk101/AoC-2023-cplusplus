@@ -12,7 +12,9 @@ constexpr auto title = "--- Day 12: Hot Springs ---";
 #include <unordered_map>
 #include <vector>
 
-#include "ctpl.h"
+#include "../ctpl.h"
+
+#include "../runall.h"
 
 using namespace std;
 using namespace chrono;
@@ -79,9 +81,9 @@ static void solve(int id, atomic<uint64_t>* cnt, string s, vector<int> c) {
     *cnt += count;
 }
 
-int main() {
+void day12(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day12.txt");
+    ifstream f("day12/day12.txt");
     cpu_set_t cpus;
     sched_getaffinity(0, sizeof(cpus), &cpus);
     thread_pool pool(CPU_COUNT(&cpus));
@@ -102,12 +104,15 @@ int main() {
         pool.push(solve, &p2, p2s, p2v);
     }
     pool.stop(true);
+    stringstream ss;
+    ss << p1;
+    r.p1 = ss.str();
+    ss.str("");
+    ss << p2;
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << p1 << endl
-         << "Part 2  - " << p2 << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start)
-                    .count() /
-                1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }

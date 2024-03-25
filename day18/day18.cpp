@@ -8,6 +8,8 @@ constexpr auto title = "--- Day 18: Lavaduct Lagoon ---";
 #include <string>
 #include <vector>
 
+#include "../runall.h"
+
 using namespace std;
 using namespace chrono;
 
@@ -61,15 +63,20 @@ static int64_t solve(bool part2) {
     return result / 2 + 1;
 }
 
-int main() {
+void day18(struct result& r) {
     auto start = high_resolution_clock::now();
-    ifstream f("day18.txt");
+    ifstream f("day18/day18.txt");
     string line;
     while (getline(f, line)) lines.push_back(line);
+    stringstream ss;
+    ss << solve(false);
+    r.p1 = ss.str();
+    ss.str("");
+    ss << solve(true);
+    r.p2 = ss.str();
+    r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
     cout << title << endl
-         << "Part 1  - " << solve(false) << endl
-         << "Part 2  - " << solve(true) << endl
-         << "Elapsed - "
-         << duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0
-         << " ms." << endl;
+         << "Part 1  - " << r.p1 << endl
+         << "Part 2  - " << r.p2 << endl
+         << "Elapsed - " << r.t << " ms." << endl;
 }
