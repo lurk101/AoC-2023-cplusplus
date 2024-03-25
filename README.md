@@ -16,28 +16,28 @@ For puzzle definition see https://adventofcode.com/2023
 
 | Day | Title | rock5b | opi5 | pi5 | pi4b |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Trebuchet?! | 1.795 ms. | 1.818 ms. | **1.736 ms.** | 3.627 ms. |
-| 2 | Cube Conundrum | 0.921 ms. | 0.92 ms. | **0.889 ms.** | 1.709 ms. |
-| 3 | Gear Ratios | 0.342 ms. | 0.34 ms. | **0.293 ms.** | 0.593 ms. |
-| 4 | Scratchcards | 1.054 ms. | 1.059 ms. | **0.962 ms.** | 2.023 ms. |
-| 5 | If You Give A Seed A Fertilizer | 0.548 ms. | 0.551 ms. | **0.506 ms.** | 1.091 ms. |
-| 6 | Wait For It | 0.081 ms. | 0.08 ms. | **0.066 ms.** | 0.204 ms. |
-| 7 | Camel Cards | 4.206 ms. | 4.211 ms. | **4.001 ms.** | 7.874 ms. |
-| 8 | Haunted Wasteland | 5.81 ms. | 5.806 ms. | **5.567 ms.** | 14.126 ms. |
-| 9 | Mirage Maintenance | 1.403 ms. | 1.398 ms. | **1.322 ms.** | 2.822 ms. |
-| 10 | Pipe Maze | 0.439 ms. | 0.428 ms. | **0.378 ms.** | 0.843 ms. |
-| 11 | Cosmic Expansion | 0.221 ms. | 0.222 ms. | **0.188 ms.** | 0.379 ms. |
-| 12 | Hot Springs | 21.871 ms. | 24.132 ms. | **18.001 ms.** | 38.167 ms. |
-| 13 | Point of Incidence | 0.348 ms. | 0.351 ms. | **0.303 ms.** | 0.645 ms. |
-| 14 | Parabolic Reflector Dish | 648.249 ms. | 657.557 ms. | **634.065 ms.** | 1210.36 ms. |
-| 15 | Lens Library | 0.914 ms. | 0.888 ms. | **0.762 ms.** | 1.792 ms. |
-| 16 | The Floor Will Be Lava | 59.187 ms. | 60.378 ms. | **56.678 ms.** | 78.518 ms. |
-| 17 | Clumsy Crucible | 45.951 ms. | 46.146 ms. | **42.194 ms.** | 86.432 ms. |
-| 18 | Lavaduct Lagoon | 0.781 ms. | 0.787 ms. | **0.761 ms.** | 1.557 ms. |
-| 19 | Aplenty | 0.984 ms. | 0.991 ms. | **0.871 ms.** | 1.933 ms. |
-| 20 | Pulse Propagation | 22.573 ms. | 22.891 ms. | **22.024 ms.** | 43.229 ms. |
-| 21 | Step Counter | 524.63 ms. | 495.154 ms. | **442.973 ms.** | 1009.45 ms. |
-| 22 | Sand Slabs | 21.101 ms. | 21.376 ms. | **20.236 ms.** | 40.206 ms. |
-| 23 | A Long Walk | 42.244 ms. | 42.739 ms. | **40.948 ms.** | 80.318 ms. |
-| 24 | Never Tell Me The Odds | 26.127 ms. | 23.268 ms. | **22.324 ms.** | 38.959 ms. |
-| 25 | Snowverload | 78.223 ms. | 76.798 ms. | **73.474 ms.** | 157.066 ms. |
+| 1 | Trebuchet?! | 1.755 ms. | 1.774 ms. | **1.713 ms.** | 4.451 ms. |
+| 2 | Cube Conundrum | **0.725 ms.** | 0.769 ms. | 0.767 ms. | 1.39 ms. |
+| 3 | Gear Ratios | 0.22 ms. | 0.223 ms. | **0.214 ms.** | 0.398 ms. |
+| 4 | Scratchcards | **0.867 ms.** | 0.886 ms. | 0.879 ms. | 1.715 ms. |
+| 5 | If You Give A Seed A Fertilizer | 0.475 ms. | 0.477 ms. | **0.459 ms.** | 0.876 ms. |
+| 6 | Wait For It | 0.005 ms. | 0.005 ms. | **0.004 ms.** | 0.013 ms. |
+| 7 | Camel Cards | 3.737 ms. | 3.772 ms. | **3.672 ms.** | 6.918 ms. |
+| 8 | Haunted Wasteland | 5.569 ms. | 5.622 ms. | **5.417 ms.** | 14.967 ms. |
+| 9 | Mirage Maintenance | 1.257 ms. | 1.271 ms. | **1.227 ms.** | 2.451 ms. |
+| 10 | Pipe Maze | 0.305 ms. | 0.307 ms. | **0.295 ms.** | 0.551 ms. |
+| 11 | Cosmic Expansion | 0.121 ms. | 0.123 ms. | **0.116 ms.** | 0.248 ms. |
+| 12 | Hot Springs | 18.43 ms. | 18.558 ms. | **17.675 ms.** | 37.574 ms. |
+| 13 | Point of Incidence | 0.256 ms. | 0.258 ms. | **0.245 ms.** | 0.487 ms. |
+| 14 | Parabolic Reflector Dish | 656.442 ms. | 660.78 ms. | **636.121 ms.** | 1217.44 ms. |
+| 15 | Lens Library | 0.649 ms. | 0.65 ms. | **0.63 ms.** | 1.193 ms. |
+| 16 | The Floor Will Be Lava | 78.854 ms. | 79.674 ms. | **74.122 ms.** | 100.062 ms. |
+| 17 | Clumsy Crucible | 44.728 ms. | 45.434 ms. | **41.901 ms.** | 90.54 ms. |
+| 18 | Lavaduct Lagoon | 0.692 ms. | 0.68 ms. | **0.67 ms.** | 1.242 ms. |
+| 19 | Aplenty | 0.685 ms. | 0.685 ms. | **0.659 ms.** | 1.379 ms. |
+| 20 | Pulse Propagation | 21.666 ms. | 21.812 ms. | **20.945 ms.** | 40.409 ms. |
+| 21 | Step Counter | 501.108 ms. | 480.054 ms. | **417.734 ms.** | 965.769 ms. |
+| 22 | Sand Slabs | 20.929 ms. | 20.99 ms. | **20.427 ms.** | 41.423 ms. |
+| 23 | A Long Walk | 42.504 ms. | 42.844 ms. | **41.164 ms.** | 80.178 ms. |
+| 24 | Never Tell Me The Odds | 22.868 ms. | 23.048 ms. | **22.168 ms.** | 38.229 ms. |
+| 25 | Snowverload | 79.159 ms. | 77.152 ms. | **75.597 ms.** | 154.219 ms. |
