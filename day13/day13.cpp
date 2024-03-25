@@ -3,9 +3,9 @@ constexpr auto title = "--- Day 13: Point of Incidence ---";
 #include <chrono>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
-#include <sstream>
 
 #include "../runall.h"
 
@@ -36,8 +36,7 @@ static bool fix_smudge(const string& line1, const string& line2) {
     bool updated = false;
     for (int i = 0; i < line1.size(); i++)
         if (line1[i] != line2[i]) {
-            if (updated)
-                return false;
+            if (updated) return false;
             updated = true;
         }
     return true;
@@ -89,8 +88,9 @@ void day13(struct result& r) {
     ss << p2;
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
 }

@@ -3,8 +3,8 @@ constexpr auto title = "--- Day 1: Trebuchet?! ---";
 #include <chrono>
 #include <fstream>
 #include <iostream>
-#include <string>
 #include <sstream>
+#include <string>
 
 #include "../runall.h"
 
@@ -15,8 +15,7 @@ static int part1(string s) {
     int first(-1), last;
     for (int i = 0; i < s.size(); ++i) {
         if (isdigit(s[i])) {
-            if (first < 0)
-                first = s[i] - '0';
+            if (first < 0) first = s[i] - '0';
             last = s[i] - '0';
         }
     }
@@ -66,8 +65,9 @@ void day01(struct result& r) {
     ss << part2_sum;
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
 }

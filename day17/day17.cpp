@@ -4,9 +4,9 @@ constexpr auto title = "--- Day 17: Clumsy Crucible ---";
 #include <fstream>
 #include <iostream>
 #include <queue>
+#include <sstream>
 #include <string>
 #include <vector>
-#include <sstream>
 
 #include "../runall.h"
 
@@ -33,7 +33,7 @@ static int solve(int mindist, int maxdist) {
         grid.size(),
         vector<vector<int>>(grid[0].size(), vector<int>(4, numeric_limits<int>::max())));
     q.push({0, 0, 0, -1});
-    while (!q.empty()) { // Dijkstra's algorithm
+    while (!q.empty()) {  // Dijkstra's algorithm
         auto [cost, y, x, d] = q.top();
         q.pop();
         if (x == grid[0].size() - 1 && y == grid.size() - 1) return cost;
@@ -70,11 +70,14 @@ void day17(struct result& r) {
     ss << solve(1, 3);
     r.p1 = ss.str();
     ss.str("");
-    ss << solve(4, 10);;
+    ss << solve(4, 10);
+    ;
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
+    grid.clear();
 }

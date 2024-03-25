@@ -3,9 +3,9 @@ constexpr auto title = "--- Day 3: Gear Ratios ---";
 #include <chrono>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
-#include <sstream>
 
 #include "../runall.h"
 
@@ -96,8 +96,12 @@ void day03(struct result& r) {
     ss << part2;
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
+    engine.clear();
+    parts.clear();
+    gears.clear();
 }

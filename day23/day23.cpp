@@ -5,8 +5,8 @@ auto constexpr title = "--- Day 23: A Long Walk ---";
 #include <iostream>
 #include <map>
 #include <queue>
-#include <vector>
 #include <sstream>
+#include <vector>
 
 #include "../runall.h"
 
@@ -191,8 +191,10 @@ void day23(struct result& r) {
     ss << part2();
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
+    grid.clear();
 }

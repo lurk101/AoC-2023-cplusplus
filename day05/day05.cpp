@@ -146,8 +146,9 @@ void day05(struct result& r) {
     ss << part2();
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - strt).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
 }

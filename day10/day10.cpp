@@ -3,9 +3,9 @@ constexpr auto title = "--- Day 10: Pipe Maze ---";
 #include <chrono>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
-#include <sstream>
 
 #include "../runall.h"
 
@@ -120,8 +120,9 @@ void day10(struct result& r) {
     ss << part2;
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - strt).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
 }

@@ -8,9 +8,9 @@ constexpr auto title = "--- Day 25: Snowverload ---";
 #include <map>
 #include <queue>
 #include <random>
+#include <sstream>
 #include <string>
 #include <vector>
-#include <sstream>
 
 #include "../runall.h"
 
@@ -138,8 +138,9 @@ void day25(struct result& r) {
     ss << "free star";
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
 }

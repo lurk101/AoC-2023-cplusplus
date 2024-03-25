@@ -52,7 +52,7 @@ static int64_t solve(bool part2) {
     }
     vertices.push_back(make_pair(vertices[0].first, vertices[0].second));
     int64_t result = 0;
-    for(; i > 0; i--) // shoelace formula
+    for (; i > 0; i--)  // shoelace formula
     {
         int64_t a = vertices[i].second * vertices[i - 1].first,
                 b = vertices[i].first * vertices[i - 1].second,
@@ -75,8 +75,11 @@ void day18(struct result& r) {
     ss << solve(true);
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
+    vertices.clear();
+    lines.clear();
 }

@@ -64,8 +64,7 @@ static unordered_map<char, int> strength{{'2', 1},  {'3', 2},  {'4', 3}, {'5', 4
                                          {'Q', 11}, {'K', 12}, {'A', 13}};
 
 static bool compare_part1(const hand& a, const hand& b) {
-    if (a.strength1 != b.strength1)
-        return a.strength1 < b.strength1;
+    if (a.strength1 != b.strength1) return a.strength1 < b.strength1;
     for (int i = 0; i < 5; ++i)
         if (a.h[i] != b.h[i]) return strength[a.h[i]] < strength[b.h[i]];
     return false;
@@ -73,8 +72,7 @@ static bool compare_part1(const hand& a, const hand& b) {
 
 static strengths strength_part2(string hand) {
     unordered_set<char> s;
-    for (auto c : hand)
-        s.insert(c);
+    for (auto c : hand) s.insert(c);
     s.insert('K');
     strengths max_strength = high_card;
     for (auto c : s) {
@@ -125,8 +123,10 @@ void day07(struct result& r) {
     ss << part(2);
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
+    hands.clear();
 }

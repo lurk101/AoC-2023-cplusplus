@@ -4,10 +4,10 @@ const auto title = "--- Day 24: Never Tell Me The Odds ---";
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <stdfloat>
 #include <string>
 #include <vector>
-#include <sstream>
 
 #include "../runall.h"
 
@@ -35,14 +35,12 @@ static int part1() {
             auto& si = stones[i];
             auto& sj = stones[j];
             float128_t det = (si.vel.x * sj.vel.y - si.vel.y * sj.vel.x);
-            if (det == 0)
-                continue;
+            if (det == 0) continue;
             float128_t u = (sj.vel.x * (si.pos.y - sj.pos.y) + sj.vel.y * (sj.pos.x - si.pos.x)) /
                            det,
                        t = (si.vel.x * (si.pos.y - sj.pos.y) + si.vel.y * (sj.pos.x - si.pos.x)) /
                            det;
-            if (u < 0 || t < 0)
-                continue;
+            if (u < 0 || t < 0) continue;
             float128_t x = sj.pos.x + sj.vel.x * t, y = sj.pos.y + sj.vel.y * t;
             if (x >= min_area && x <= max_area && y >= min_area && y <= max_area) sum++;
         }
@@ -122,8 +120,10 @@ void day24(struct result& r) {
     ss << part2();
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
+    stones.clear();
 }

@@ -3,8 +3,8 @@ constexpr auto title = "--- Day 11: Cosmic Expansion ---";
 #include <chrono>
 #include <fstream>
 #include <iostream>
-#include <string>
 #include <sstream>
+#include <string>
 #include <vector>
 
 #include "../runall.h"
@@ -17,16 +17,14 @@ static vector<string> lines;
 static int count_row(int row) {
     int count = 0;
     for (char c : lines[row])
-        if (c == '#')
-            count++;
+        if (c == '#') count++;
     return count;
 }
 
 static int count_col(int col) {
     int count = 0;
     for (string& row : lines)
-        if (row[col] == '#')
-            count++;
+        if (row[col] == '#') count++;
     return count;
 }
 
@@ -63,8 +61,7 @@ void day11(struct result& r) {
     auto start = high_resolution_clock::now();
     ifstream f("day11/day11.txt");
     string line;
-    while (getline(f, line))
-        lines.push_back(line);
+    while (getline(f, line)) lines.push_back(line);
     stringstream ss;
     ss << part(1);
     r.p1 = ss.str();
@@ -72,8 +69,10 @@ void day11(struct result& r) {
     ss << part(999999);
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
+    lines.clear();
 }

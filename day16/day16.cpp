@@ -4,10 +4,10 @@ constexpr auto title = "--- Day 16: The Floor Will Be Lava ---";
 #include <fstream>
 #include <iostream>
 #include <list>
+#include <sstream>
 #include <string>
 #include <thread>
 #include <vector>
-#include <sstream>
 
 #include "../runall.h"
 
@@ -136,8 +136,14 @@ void day16(struct result& r) {
     ss << part2;
     r.p2 = ss.str();
     r.t = duration_cast<microseconds>(high_resolution_clock::now() - start).count() / 1000.0;
-    cout << title << endl
-         << "Part 1  - " << r.p1 << endl
-         << "Part 2  - " << r.p2 << endl
-         << "Elapsed - " << r.t << " ms." << endl;
+    if (coutflag)
+        cout << title << endl
+             << "Part 1  - " << r.p1 << endl
+             << "Part 2  - " << r.p2 << endl
+             << "Elapsed - " << r.t << " ms." << endl;
+    for (int i = 0; i < 4; i++) {
+        beams[i].clear();
+        sides[i] = 0;
+    }
+    grid.clear();
 }

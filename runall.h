@@ -6,3 +6,5 @@ struct result {
     std::string p1, p2;
     float t;
 };
+
+extern int coutflag;
