@@ -42,6 +42,9 @@ extern void day24(struct result& r);
 extern void day25(struct result& r);
 
 int coutflag;
+ofstream o;
+float total = 0;
+int test = 0;
 
 static void run(void (*r)(struct result&), string p1, string p2) {
     struct result res;
@@ -63,9 +66,17 @@ static void run(void (*r)(struct result&), string p1, string p2) {
         exit(-1);
     }
     cout << "best = " << min_t << endl;
+    o << ++test << ' ' << min_t << endl;
+    total += min_t;
 }
 
 int main(int ac, char** av) {
+    if (ac < 2) {
+        cout << "missing run name" << endl;
+        exit(-1);
+    }
+    o.open(av[1]);
+
     run(day01, "55002", "55093");
     run(day02, "2563", "70768");
     run(day03, "527144", "81463996");
@@ -91,4 +102,7 @@ int main(int ac, char** av) {
     run(day23, "2402", "6450");
     run(day24, "27732", "641619849766168");
     run(day25, "603368", "free star");
+
+    o.close();
+    cout << "Total " << total << endl;
 }
