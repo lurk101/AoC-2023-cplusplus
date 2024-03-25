@@ -1,5 +1,5 @@
 TUNE=cortex-a76
-ifeq ($(HOSTNAME), pi4b)
+ifeq ($(shell hostname),pi4b)
 TUNE=cortex-a72
 endif
 
