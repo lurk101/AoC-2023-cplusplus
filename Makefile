@@ -1,9 +1,18 @@
-TUNE=cortex-a76
+TUNE=
 ifeq ($(shell hostname),pi4b)
-TUNE=cortex-a72
+TUNE=-mtune=cortex-a72
+endif
+ifeq ($(shell hostname),rock5b)
+TUNE=-mtune=cortex-a76
+endif
+ifeq ($(shell hostname),opi5)
+TUNE=-mtune=cortex-a76
+endif
+ifeq ($(shell hostname),pi5)
+TUNE=-mtune=cortex-a76
 endif
 
-CPPFLAGS=-O3 -std=c++23 -mtune=$(TUNE)
+CPPFLAGS=-O3 -std=c++23 $(TUNE)
 LDFLAGS=-lpthread
 
 .PHONY: all clean

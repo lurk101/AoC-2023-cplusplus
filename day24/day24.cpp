@@ -109,8 +109,15 @@ void day24(struct result& r) {
     string line;
     stone s;
     char c;
-    while (f >> s.pos.x) {
-        f >> c >> s.pos.y >> c >> s.pos.z >> c >> s.vel.x >> c >> s.vel.y >> c >> s.vel.z;
+    int64_t x, y, z, vx, vy, vz;
+    while (f >> x) {
+        f >> c >> y >> c >> z >> c >> vx >> c >> vy >> c >> vz;
+        s.pos.x = x;
+        s.pos.y = y;
+        s.pos.z = z;
+        s.vel.x = vx;
+        s.vel.y = vy;
+        s.vel.z = vz;
         stones.push_back(s);
     }
     stringstream ss;
